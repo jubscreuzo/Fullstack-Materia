@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React App com Rotas</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
+    <script>
+      const { BrowserRouter, Route, Link } = ReactRouterDOM;
+
+      function Home() {
+        return <h1>Página Inicial</h1>;
+      }
+
+      function Sobre() {
+        return <h1>Página Sobre</h1>;
+      }
+
+      function Contato() {
+        return <h1>Página Contato</h1>;
+      }
+
+      function App() {
+        return (
+          <BrowserRouter>
+            <div>
+              <nav>
+                <ul>
+                  <li>
+                    <Link to="/">Home</Link>
+                  </li>
+                  <li>
+                    <Link to="/sobre">Sobre</Link>
+                  </li>
+                  <li>
+                    <Link to="/contato">Contato</Link>
+                  </li>
+                </ul>
+              </nav>
+
+              <Route exact path="/" component={Home} />
+              <Route path="/sobre" component={Sobre} />
+              <Route path="/contato" component={Contato} />
+            </div>
+          </BrowserRouter>
+        );
+      }
+
+      ReactDOM.render(<App />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
